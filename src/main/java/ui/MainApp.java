@@ -1,5 +1,24 @@
 package ui;
 
+/**
+ * ALDA Projekt – Studenten-Notenverwaltung
+ *
+ * Datenstruktur:
+ *   DoublyLinkedList (doppelt verkettete Liste, Kapitel 03)
+ *   – Speichert alle Studenten mit next- und prev-Zeigern
+ *   – Ermöglicht effizientes Einfügen (O(1)) und Entfernen (O(n))
+ *
+ * Algorithmen:
+ *   1. InsertionSort  (Kapitel 04) – sortiert nach Nachname A-Z
+ *      O(n²) worst-case, O(n) best-case bei fast-sortierter Liste
+ *
+ *   2. MergeSort      (Kapitel 04) – sortiert nach Matrikelnummer / Note
+ *      O(n log n) für alle Fälle, stabil, Divide & Conquer
+ *
+ *   3. QuickSort      (Kapitel 04) – sortiert nach Note
+ *      O(n log n) average, O(n²) worst-case, in der Praxis schnellstes Verfahren
+ */
+
 import datastructure.StudentenVerwaltung;
 import javafx.application.Application;
 import javafx.geometry.Insets;
