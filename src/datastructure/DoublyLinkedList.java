@@ -3,22 +3,18 @@ package datastructure;
 import model.Student;
 
 /**
- * Doppelt verkettete Liste zur Speicherung der Studenten.
+ * Doppelt verkettete Liste (vgl. Vorlesung Kapitel 03).
  *
- * Jeder Knoten hat einen next- und prev-Zeiger (vgl. Vorlesung Kapitel 03).
+ * Jeder Knoten hat einen next- und prev-Zeiger.
  *
  * Laufzeiten:
- *   add:      O(1)  – Einfügen am Ende über tail-Zeiger
- *   remove:   O(n)  – Suche nach Matrikelnummer
- *   findById: O(n)  – Lineare Suche
- *   size:     O(1)
+ *   add:    O(1) - Einfuegen am Ende ueber tail-Zeiger
+ *   remove: O(n) - Lineare Suche nach Matrikelnummer
+ *   find:   O(n) - Lineare Suche
+ *   size:   O(1)
  */
 public class DoublyLinkedList {
 
-    /**
-     * Knoten der doppelt verketteten Liste.
-     * Enthält den Studenten sowie next- und prev-Zeiger.
-     */
     public static class Node {
         public Student data;
         public Node next;
@@ -39,7 +35,7 @@ public class DoublyLinkedList {
         size = 0;
     }
 
-    /** Fügt einen Studenten am Ende ein. O(1) dank tail-Zeiger. */
+    /** Fuegt einen Studenten am Ende ein. O(1) dank tail-Zeiger. */
     public void add(Student student) {
         Node newNode = new Node(student);
         if (head == null) {
@@ -80,7 +76,7 @@ public class DoublyLinkedList {
         return null;
     }
 
-    /** Gibt alle Studenten als Array zurück – für Sortieralgorithmen. */
+    /** Gibt alle Studenten als Array zurueck - wird von den Sortieralgorithmen benoetigt. */
     public Student[] toArray() {
         Student[] arr = new Student[size];
         Node current = head;
@@ -99,8 +95,7 @@ public class DoublyLinkedList {
         for (Student s : arr) add(s);
     }
 
-    public int size() { return size; }
+    public int size()      { return size; }
     public boolean isEmpty() { return size == 0; }
-    public Node getHead() { return head; }
-    public Node getTail() { return tail; }
+    public Node getHead()  { return head; }
 }

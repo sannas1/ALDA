@@ -3,7 +3,7 @@ package algorithms;
 import model.Student;
 
 /**
- * Quick Sort – Divide & Conquer nach C.A.R. Hoare (vgl. Vorlesung Kapitel 04).
+ * Quick Sort - Divide and Conquer nach C.A.R. Hoare (vgl. Vorlesung Kapitel 04).
  *
  * QuickSort(A, l, r):
  *   falls l < r:
@@ -12,18 +12,19 @@ import model.Student;
  *     QuickSort(A, l, p-1)
  *     QuickSort(A, p+1, r)
  *
- * Partition: Bringt alle Elemente < Pivot nach links, alle > Pivot nach rechts.
+ * Partition bringt alle Elemente kleiner als Pivot nach links,
+ * alle groesseren nach rechts. Pivot sitzt danach an seiner Endposition.
  *
  * Laufzeit:
- *   Average-Case: O(n log n)
- *   Worst-Case:   O(n²) – bei bereits sortierter Eingabe
+ *   Average-Case: O(n log n) - Rekursionstiefe log(n), n Elemente pro Ebene
+ *   Worst-Case:   O(n2)      - bei bereits sortierter Eingabe
  *
- * Einsatz: Sortierung nach Note – in der Praxis schnellstes Verfahren
+ * Einsatz: Sortierung nach Note - in der Praxis schnellstes Verfahren
  * (konstanter Faktor kleiner als Merge Sort, vgl. Vorlesung).
  */
 public class QuickSort {
 
-    public enum SortKey { NOTE_ASC, NOTE_DESC, MATRIKELNUMMER }
+    public enum SortKey { NOTE, MATRIKELNUMMER }
 
     public static void sort(Student[] arr, SortKey key) {
         if (arr == null || arr.length <= 1) return;
@@ -61,8 +62,8 @@ public class QuickSort {
 
     private static double getValue(Student s, SortKey key) {
         return switch (key) {
-            case NOTE_ASC, NOTE_DESC -> s.getNote();
-            case MATRIKELNUMMER      -> s.getMatrikelnummer();
+            case NOTE           -> s.getNote();
+            case MATRIKELNUMMER -> s.getMatrikelnummer();
         };
     }
 }

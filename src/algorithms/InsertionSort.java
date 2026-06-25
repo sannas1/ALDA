@@ -3,25 +3,23 @@ package algorithms;
 import model.Student;
 
 /**
- * Insertion Sort – Sortieren durch Einfügen (vgl. Vorlesung Kapitel 04).
+ * Insertion Sort - Sortieren durch Einfuegen (vgl. Vorlesung Kapitel 04).
  *
  * Idee: Das Array wird von links nach rechts durchlaufen. Das aktuelle Element
- * wird durch Verschieben an die richtige Stelle im bereits sortierten linken Teil eingefügt.
- *
+ * wird durch Verschieben an die richtige Stelle im sortierten linken Teil eingefuegt.
  * Invariante: Nach dem k-ten Durchlauf liegen die ersten k Elemente sortiert vor.
  *
  * Laufzeit:
- *   Best-Case:  O(n)   – bereits sortierte Folge (nur n Vergleiche)
- *   Worst-Case: O(n²)  – umgekehrt sortierte Folge
+ *   Best-Case:  O(n)  - bereits sortierte Folge (nur n Vergleiche noetig)
+ *   Worst-Case: O(n2) - umgekehrt sortierte Folge
  *
- * Einsatz: Sortierung nach Name – effizient wenn Liste bereits fast sortiert ist
- * (z.B. nach Hinzufügen eines einzelnen Studenten).
+ * Einsatz: Sortierung nach Nachname - effizient wenn Liste fast sortiert ist,
+ * z.B. nach dem Hinzufuegen eines einzelnen Studenten.
  */
 public class InsertionSort {
 
     public enum SortKey { NACHNAME, VORNAME }
 
-    /** Sortiert das Student-Array aufsteigend nach dem gewählten Schlüssel. In-place. */
     public static void sort(Student[] arr, SortKey key) {
         int n = arr.length;
         for (int k = 1; k < n; k++) {

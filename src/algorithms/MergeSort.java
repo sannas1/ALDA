@@ -3,7 +3,7 @@ package algorithms;
 import model.Student;
 
 /**
- * Merge Sort – Divide & Conquer (vgl. Vorlesung Kapitel 04).
+ * Merge Sort - Divide and Conquer (vgl. Vorlesung Kapitel 04).
  *
  * MergeSort(A, l, r):
  *   falls l < r:
@@ -12,10 +12,12 @@ import model.Student;
  *     MergeSort(A, m+1, r)
  *     Merge(A, l, m, r)
  *
- * Laufzeit: O(n log n) für alle Fälle – optimal und stabil.
+ * Merge verschmilzt A[l..m] und A[m+1..r] zu einer sortierten Folge in A[l..r].
  *
- * Einsatz: Sortierung nach Matrikelnummer – garantiert stabile O(n log n) Laufzeit,
- * ideal wenn die Reihenfolge gleicher Noten erhalten bleiben soll.
+ * Laufzeit: O(n log n) fuer alle Faelle - optimal und stabil.
+ *
+ * Einsatz: Sortierung nach Matrikelnummer - garantierte Laufzeit unabhaengig
+ * von der Eingabe, ideal fuer grosse Datensaetze.
  */
 public class MergeSort {
 
@@ -35,7 +37,6 @@ public class MergeSort {
         }
     }
 
-    /** Verschmilzt A[l..m] und A[m+1..r] zu einer sortierten Folge. Verwendet Hilfsarray B. */
     private static void merge(Student[] arr, int l, int m, int r, SortKey key) {
         Student[] B = new Student[r - l + 1];
         for (int i = 0; i < B.length; i++) B[i] = arr[l + i];
@@ -45,15 +46,10 @@ public class MergeSort {
         int rightEnd = r - l;
 
         for (int i = l; i <= r; i++) {
-            if (p > m - l) {
-                arr[i] = B[q++];
-            } else if (q > rightEnd) {
-                arr[i] = B[p++];
-            } else if (compare(B[p], B[q], key) <= 0) {
-                arr[i] = B[p++];
-            } else {
-                arr[i] = B[q++];
-            }
+            if (p > m - l)         arr[i] = B[q++];
+            else if (q > rightEnd) arr[i] = B[p++];
+            else if (compare(B[p], B[q], key) <= 0) arr[i] = B[p++];
+            else arr[i] = B[q++];
         }
     }
 
